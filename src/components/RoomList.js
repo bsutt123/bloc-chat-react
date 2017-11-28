@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import styled from 'styled-components';
+import User from './../components/User';
 
 class RoomList extends Component {
     constructor(props) {
@@ -10,6 +11,7 @@ class RoomList extends Component {
             newRoomName: ''
         }
     }
+
     componentDidMount() {
         this.roomsRef.on('child_added', snapshot => {
             let newRoom = snapshot.val();
@@ -17,20 +19,28 @@ class RoomList extends Component {
             this.setState({rooms: this.state.rooms.concat(newRoom)});
         })
     }
+
     handleChange(event) {
         this.setState({newRoomName: event.target.value})
     }
+
     handleClick() {
         this.roomsRef.push({name: this.state.newRoomName});
         this.setState({newRoomName: ''})
     }
 
+    setNewUser(user) {
+        this.props.setUser(user)
+    }
+
     setActiveRoom(room) {
         this.props.setActiveRoom(room);
     }
+
     render() {
         return (
-            <SidePanel> 
+            <SidePanel>
+                <User firebase={this.props.firebase} setNewUser={this.setNewUser.bind(this)}/>
                 <Title> Welcome to Bloc Chat! </Title>
                 <SubTitle> Please select your room </SubTitle>
                 <StyledUl>
