@@ -4,7 +4,6 @@ import styled from 'styled-components';
 class RoomList extends Component {
     constructor(props) {
         super(props);
-        console.log(props);
         this.roomsRef = this.props.firebase.database().ref('rooms');
         this.state = {
             rooms: [],
@@ -13,7 +12,9 @@ class RoomList extends Component {
     }
     componentDidMount() {
         this.roomsRef.on('child_added', snapshot => {
-            this.setState({rooms: this.state.rooms.concat(snapshot.val().name)});
+            let newRoom = snapshot.val();
+            newRoom.key = snapshot.key;
+            this.setState({rooms: this.state.rooms.concat(newRoom)});
         })
     }
     handleChange(event) {
@@ -23,6 +24,10 @@ class RoomList extends Component {
         this.roomsRef.push({name: this.state.newRoomName});
         this.setState({newRoomName: ''})
     }
+
+    setActiveRoom(room) {
+        this.props.setActiveRoom(room);
+    }
     render() {
         return (
             <SidePanel> 
@@ -30,8 +35,8 @@ class RoomList extends Component {
                 <SubTitle> Please select your room </SubTitle>
                 <StyledUl>
                     {
-                        this.state.rooms.map((roomName,index ) => {
-                            return <RoomItem key={index} roomName={roomName} />
+                        this.state.rooms.map((room,index ) => {
+                            return <RoomItem key={index} roomName={room.name} handleActiveRoom={() =>  this.setActiveRoom(room)} />
                         })
                     }
                 </StyledUl>
@@ -46,7 +51,7 @@ class RoomList extends Component {
 
 const RoomItem = (props) => {
     return (
-        <StyledLi> {props.roomName} </StyledLi> 
+        <StyledLi onClick={props.handleActiveRoom}> {props.roomName} </StyledLi> 
     )
 }
 
