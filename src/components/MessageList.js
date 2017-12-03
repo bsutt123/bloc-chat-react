@@ -39,89 +39,47 @@ class MessageList extends Component {
         }
     } 
 
-    convertDate(dateNum) {
-        const d = new Date(dateNum);
-        const stringDate=  d.toString();
-        if (stringDate === "Invalid Date") {
-            return ""
-        } else {
-            return stringDate;
-        }
-    }
-
     handleClick() {
-        console.log("I handled a click event");
-        this.messagesRef.push({
-            content: this.state.newMessage,
-            user: this.messageUsername(),
-            sentAt: Date.now(),
-            roomId: this.props.activeRoom.key
-        });
-        this.setState({newMessage:''});
+        if (this.props.activeRoom.key && this.state.newMessage) {
+            let stringDate = new Date
+            stringDate = stringDate.toDateString();
+            this.messagesRef.push({
+                content: this.state.newMessage,
+                user: this.messageUsername(),
+                sentAt: stringDate,
+                roomId: this.props.activeRoom.key
+            });
+            this.setState({newMessage:''});
+        }
     }
     render() {
         return (
-            <MessageContainer> 
-                <MessageUl>
+            <div className="message-container"> 
+                <h1 className="heading-primary"> {this.props.activeRoom.name} </h1>
+                <ul className="message-list">
                     {
                         this.state.messages.map((message, index) => {
-                            return (<li key={index}> <Message message={message} date={this.convertDate(message.sentAt)} />  </li> )
+                            return (<li key={index}> <Message message={message} date={message.sentAt} />  </li> )
                         })                 
                     }
-                </MessageUl>
-                <NewMessageDiv>
-                    <NewMessageInput type="text" value={this.state.newMessage} onChange={this.handleChange.bind(this)}/>
-                    <NewMessageButton onClick={this.handleClick.bind(this)} > Submit Message </NewMessageButton>
-                </NewMessageDiv>
-            </MessageContainer>
+                </ul>
+                <div className="new-message-box">
+                    <textarea className="new-message-input" type="text" value={this.state.newMessage} onChange={this.handleChange.bind(this)} ></textarea>
+                    <button className="btn new-message-btn" onClick={this.handleClick.bind(this)} > Submit Message </button>
+                </div>
+            </div>
         )
     }
 }
 
 const Message = (props) => {
     return (
-        <MessageBox>
-            <span> {props.message.user} </span>
-            <p> {props.message.content} </p>
-            <span> {props.date} </span>
-        </MessageBox>
+        <div className="message-box">
+            <div className="message-user"> {props.message.user} </div>
+            <p className="message-content"> {props.message.content} </p>
+            <div className="message-time"> {props.date} </div>
+        </div>
     )
 }
-const MessageContainer = styled.div`
-    position: absolute;
-    left: 25%;
-    top: 0;
-    right: 0;
-    bottom: 30px;
-    background: blue;
-`
 
-const MessageUl = styled.ul`
-    list-style-type: none;
-    margin:0;
-    padding:0;
-`
-const MessageBox =  styled.div`
-    border: 2px solid #dedede;
-    background-color: #f1f1f1;
-    border-radius: 5px;
-    padding: 10px;
-    margin: 10px 0;
-`
-
-const NewMessageInput = styled.input`
-    width: 80%;
-    height: 30px;
-`
-const NewMessageButton = styled.button`
-    width: 18%;
-    height: 30px;
-`
-const NewMessageDiv = styled.div`
-    position: fixed;
-    left:25%;
-    right: 0;
-    bottom: 0;
-    background: red;
-`
 export default MessageList;

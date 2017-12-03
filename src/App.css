@@ -1,4 +1,137 @@
-.App {
-  text-align: left;
-}
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: inherit; }
 
+html {
+  font-size: 62.5%; }
+
+body {
+  box-sizing: border-box; }
+
+.heading-primary {
+  color: #000000;
+  text-transform: uppercase;
+  font-size: 3rem;
+  text-align: center; }
+
+.heading-secondary {
+  color: #000000;
+  text-transform: uppercase;
+  font-size: 2rem;
+  font-weight: 300;
+  text-align: center; }
+
+body {
+  font-family: 'Raleway', 'Lato', sans-serif; }
+
+.btn {
+  background: #008ba3;
+  border-radius: 100px;
+  text-transform: uppercase;
+  transition: all .2s;
+  border: 0; }
+  .btn:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 1rem 2rem rgba(0, 0, 0, 0.4); }
+  .btn:active {
+    transform: translateY(-2px);
+    box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.4); }
+
+.side-panel {
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  width: 20%;
+  background: #00bcd4; }
+
+.room-list {
+  list-style: none;
+  margin-left: 1rem; }
+
+.room-item {
+  font-size: 1.6rem;
+  padding: .8rem;
+  margin-left: 1rem;
+  transition: all .2s;
+  cursor: default; }
+  .room-item:hover {
+    transform: translateX(1rem) scale(1.1); }
+
+.message-container {
+  position: absolute;
+  left: 20%;
+  top: 0;
+  right: 0;
+  bottom: 7%;
+  background: #DDDDDD; }
+
+.message-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  margin: auto; }
+
+.message-box {
+  position: relative;
+  background-color: #ffffff;
+  width: 90%;
+  border-radius: 10rem;
+  padding: 1rem;
+  margin: 1rem 0;
+  margin-left: 1rem;
+  font-size: 1.6rem; }
+
+.message-user {
+  margin-top: .5rem; }
+
+.message-content {
+  padding: 1rem; }
+
+.message-time {
+  text-align: right; }
+
+.new-message-box {
+  position: fixed;
+  left: 20%;
+  right: 0;
+  bottom: 0;
+  top: 93%;
+  background: #DDDDDD; }
+
+.new-message-input {
+  width: 80%;
+  height: 100%;
+  font-size: 2rem; }
+
+.new-message-btn {
+  position: absolute;
+  left: 80%;
+  top: 25%;
+  width: 20%;
+  height: 3rem;
+  font-size: 1.5rem; }
+
+.btn-user {
+  font-size: 2rem;
+  width: 80%;
+  padding: 1rem;
+  margin: 1rem; }
+
+.new-room-box {
+  margin-top: 1rem;
+  margin-left: .5rem; }
+
+.new-room-input {
+  width: 60%;
+  font-size: 1.6rem; }
+
+.new-room-btn {
+  width: 30%;
+  height: 100%;
+  font-size: 1.2rem;
+  padding: .3rem;
+  margin-left: .5rem; }

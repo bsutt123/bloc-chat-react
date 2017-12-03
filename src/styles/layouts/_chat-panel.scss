@@ -1,0 +1,60 @@
+.message-container {
+    position: absolute;
+    left: 20%;
+    top: 0;
+    right: 0;
+    bottom: 7%;
+    background: $color-light-grey;
+}
+
+.message-list {
+    list-style: none;
+    margin:0;
+    padding:0;
+    margin: auto;
+}
+
+.message-box {
+    position: relative;
+    background-color:$color-white;
+    width: 90%;
+    border-radius: 10rem;
+    padding: 1rem;
+    margin: 1rem 0;
+    margin-left: 1rem;
+    font-size: 1.6rem;
+}
+
+.message-user {
+    margin-top: .5rem;
+}
+.message-content {
+    padding: 1rem;
+}
+.message-time {
+    text-align: right;
+}
+
+.new-message-box {
+    position: fixed;
+    left:20%;
+    right: 0;
+    bottom: 0;
+    top:93%;
+    background:$color-light-grey;
+}
+
+.new-message-input {
+    width: 80%;
+    height: 100%;
+    font-size: 2rem;
+}
+
+.new-message-btn {
+    position: absolute;
+    left: 80%;
+    top: 25%;
+    width: 20%;
+    height: 3rem;
+    font-size: 1.5rem;
+}

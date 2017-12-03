@@ -32,16 +32,8 @@ class User extends Component {
     }
     render() {
         return (
-            <UserButton onClick={() => this.handleClick()}> {this.userText()} </UserButton>
+            <button className="btn btn-user" onClick={() => this.handleClick()}> {this.userText()} </button>
         )
     }
 }
-
-const UserButton = styled.button`
-    width: 80%;
-    color: black;
-    margin: auto;
-    text-align: center;
-`
-
 export default User;

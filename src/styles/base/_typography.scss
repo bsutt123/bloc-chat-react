@@ -1,0 +1,18 @@
+.heading-primary{
+    color: $color-black;
+    text-transform: uppercase;
+    font-size: 3rem;
+    text-align: center;
+}
+
+.heading-secondary {
+    color: $color-black;
+    text-transform: uppercase;
+    font-size: 2rem;
+    font-weight:300;
+    text-align: center;
+}
+
+body {
+    font-family: 'Raleway', 'Lato', sans-serif;
+}
