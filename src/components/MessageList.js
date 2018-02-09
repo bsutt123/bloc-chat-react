@@ -27,7 +27,6 @@ class MessageList extends Component {
     }
 
     handleChange(event) {
-        console.log("I'm handling a changed message event");
         this.setState({newMessage: event.target.value});
     }
 
